@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefWidth="1100" prefHeight="700"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CameraAttendanceController"
+            style="-fx-background-color: linear-gradient(to bottom, #43e0a6, #1abc9c);">
+
+    <BorderPane AnchorPane.topAnchor="0"
+                AnchorPane.bottomAnchor="0"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"
+                style="-fx-background-color: transparent;">
+
+        <!-- ================= TOP BAR ================= -->
+        <top>
+            <HBox spacing="12"
+                  alignment="CENTER_LEFT"
+                  style="-fx-background-color: rgba(255,255,255,0.95);
+                         -fx-border-color: rgba(255,255,255,0.6);
+                         -fx-border-width: 0 0 1 0;">
+                <padding>
+                    <Insets top="14" right="18" bottom="14" left="18"/>
+                </padding>
+
+                <Label text="📷 ĐIỂM DANH BẰNG CAMERA"
+                       style="-fx-font-size: 18px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #0f172a;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label text="Phòng:"/>
+                <TextField fx:id="txtRoom"
+                           prefWidth="140"
+                           promptText="VD: P101"/>
+
+                <Label text="Môn:"/>
+                <TextField fx:id="txtSubject"
+                           prefWidth="220"
+                           promptText="VD: Java / CSDL"/>
+
+                <Button text="⟳ Làm mới"
+                        onAction="#onRefresh"
+                        style="-fx-background-color: #1abc9c;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;
+                               -fx-background-radius: 10;"/>
+
+                <Button text="↩ Quay lại"
+                        onAction="#onBackToMenu"
+                        style="-fx-background-color: #fee2e2;
+                               -fx-text-fill: #b91c1c;
+                               -fx-font-weight: bold;
+                               -fx-background-radius: 10;"/>
+            </HBox>
+        </top>
+
+        <!-- ================= CENTER ================= -->
+        <center>
+            <HBox spacing="16">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <!-- ================= CAMERA ================= -->
+                <VBox prefWidth="620"
+                      spacing="14"
+                      style="-fx-background-color: rgba(255,255,255,0.95);
+                             -fx-background-radius: 18;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 18, 0, 0, 8);">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <Label text="Khung Camera"
+                           style="-fx-font-size: 15px;
+                                  -fx-font-weight: bold;"/>
+
+                    <StackPane prefHeight="360"
+                               style="-fx-background-color: #0b1220;
+                                      -fx-background-radius: 16;">
+
+                        <ImageView fx:id="cameraView"
+                                   fitWidth="560"
+                                   fitHeight="340"
+                                   preserveRatio="true"/>
+
+                        <Rectangle width="560"
+                                   height="340"
+                                   arcWidth="32"
+                                   arcHeight="32"
+                                   style="-fx-fill: rgba(255,255,255,0.05);"/>
+                    </StackPane>
+
+                    <HBox spacing="10">
+                        <Button text="▶ Bật Camera"
+                                onAction="#startCamera"
+                                prefHeight="40"
+                                style="-fx-background-color: #1abc9c;
+                                       -fx-text-fill: white;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;"/>
+
+                        <Button text="⏸ Tạm dừng"
+                                onAction="#pauseCamera"
+                                prefHeight="40"
+                                style="-fx-background-color: #ecfeff;
+                                       -fx-text-fill: #0f766e;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;"/>
+
+                        <Button text="■ Tắt"
+                                onAction="#stopCamera"
+                                prefHeight="40"
+                                style="-fx-background-color: #fee2e2;
+                                       -fx-text-fill: #b91c1c;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;"/>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Button text="📸 Chụp (Điểm danh)"
+                                onAction="#captureImage"
+                                prefHeight="40"
+                                style="-fx-background-color: #22c55e;
+                                       -fx-text-fill: white;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- ================= TABLE ================= -->
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: rgba(255,255,255,0.95);
+                             -fx-background-radius: 18;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 18, 0, 0, 8);">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <HBox spacing="10">
+                        <Label text="Danh sách điểm danh"
+                               style="-fx-font-size: 15px;
+                                      -fx-font-weight: bold;"/>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <TextField fx:id="txtSearch"
+                                   promptText="Nhập MSSV (Enter)"
+                                   prefWidth="260"
+                                   onAction="#onMSSVEntered"/>
+
+                        <Button text="🔍"
+                                onAction="#onMSSVEntered"/>
+                    </HBox>
+
+                    <TableView fx:id="tableAttendance"
+                               VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colId" text="MSSV" prefWidth="120"/>
+                            <TableColumn fx:id="colName" text="Họ tên" prefWidth="240"/>
+                            <TableColumn fx:id="colClass" text="Lớp" prefWidth="110"/>
+                            <TableColumn fx:id="colTime" text="Giờ" prefWidth="90"/>
+                            <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="110"/>
+                        </columns>
+                    </TableView>
+
+                    <!-- ======= FOOTER BUTTON ======= -->
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Button text="🖼 Xuất ảnh"
+                                onAction="#exportImage"
+                                style="-fx-background-color: #2563eb;
+                                       -fx-text-fill: white;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </center>
+
+    </BorderPane>
+</AnchorPane>

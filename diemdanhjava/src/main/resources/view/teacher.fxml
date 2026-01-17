@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1100" prefHeight="700"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.TeacherController"
+            style="-fx-background-color: linear-gradient(to bottom, #43e0a6, #1abc9c);">
+
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT"
+              style="-fx-background-color: rgba(255,255,255,0.95);">
+            <padding>
+                <Insets top="12" right="20" bottom="12" left="20"/>
+            </padding>
+
+            <Button text="← Quay lại"
+                    onAction="#onBack"
+                    style="-fx-background-color:#e74c3c; -fx-text-fill:white;"/>
+
+            <Label text="QUẢN LÝ GIÁO VIÊN"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="25" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- ========== FORM ========== -->
+            <HBox spacing="15"
+                  style="-fx-background-color:white; -fx-background-radius:16;">
+                <padding>
+                    <Insets top="15" bottom="15" left="15" right="15"/>
+                </padding>
+
+                <TextField fx:id="txtCode"
+                           promptText="Mã giáo viên"
+                           prefWidth="200"/>
+
+                <TextField fx:id="txtName"
+                           promptText="Họ tên giáo viên"
+                           prefWidth="300"/>
+
+                <Button text="Thêm"
+                        onAction="#onAdd"
+                        style="-fx-background-color:#2ecc71; -fx-text-fill:white;"/>
+
+                <Button text="Xóa"
+                        onAction="#onDelete"
+                        style="-fx-background-color:#e67e22; -fx-text-fill:white;"/>
+            </HBox>
+
+            <!-- ========== TABLE ========== -->
+            <TableView fx:id="tableTeacher"
+                       style="-fx-background-color:white; -fx-background-radius:16;">
+                <columns>
+                    <TableColumn fx:id="colSTT"
+                                 text="STT"
+                                 prefWidth="60"/>
+
+                    <TableColumn fx:id="colCode"
+                                 text="Mã GV"
+                                 prefWidth="200"/>
+
+                    <TableColumn fx:id="colName"
+                                 text="Họ tên"
+                                 prefWidth="350"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

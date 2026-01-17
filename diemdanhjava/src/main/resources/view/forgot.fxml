@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefWidth="420" prefHeight="520"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ForgotController"
+            style="-fx-background-color: linear-gradient(to bottom,#43e0a6,#1abc9c);">
+
+    <VBox alignment="CENTER" spacing="14"
+          layoutX="60" layoutY="90"
+          prefWidth="300"
+          style="-fx-background-color: rgba(255,255,255,0.35);
+                 -fx-background-radius:12;
+                 -fx-padding:25;">
+
+        <Label text="QUÊN MẬT KHẨU"
+               style="-fx-font-size:20;-fx-font-weight:bold;-fx-text-fill:white;"/>
+
+        <TextField fx:id="txtEmail" promptText="Email Gmail"/>
+        <TextField fx:id="txtOtp" promptText="Mã OTP"/>
+        <PasswordField fx:id="txtNewPassword" promptText="Mật khẩu mới"/>
+
+        <Button text="GỬI OTP"
+                onAction="#sendOtp"
+                prefWidth="160"/>
+
+        <Button text="XÁC NHẬN"
+                onAction="#resetPassword"
+                prefWidth="160"
+                style="-fx-background-color:#16a085;-fx-text-fill:white;"/>
+
+        <Hyperlink text="← Quay lại đăng nhập"
+                   onAction="#backLogin"
+                   style="-fx-text-fill:white;"/>
+
+    </VBox>
+</AnchorPane>

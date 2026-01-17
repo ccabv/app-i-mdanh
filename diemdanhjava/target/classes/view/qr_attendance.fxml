@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1100" prefHeight="700"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.QRAttendanceController"
+            style="-fx-background-color: linear-gradient(to bottom, #43e0a6, #1abc9c);">
+
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color: rgba(255,255,255,0.95);">
+            <padding>
+                <Insets top="12" right="20" bottom="12" left="20"/>
+            </padding>
+
+            <Button text="← Quay lại"
+                    onAction="#onBack"
+                    style="-fx-background-color:#e74c3c;
+                           -fx-text-fill:white;
+                           -fx-font-weight:bold;
+                           -fx-background-radius:8;
+                           -fx-padding:6 14;"/>
+
+            <Label text="ĐIỂM DANH BẰNG QR"
+                   style="-fx-font-size:22px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#2c3e50;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <HBox spacing="30">
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+
+            <!-- ================= LEFT: QR ================= -->
+            <VBox spacing="16"
+                  prefWidth="380"
+                  alignment="TOP_CENTER"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:18;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 4);">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Tạo mã QR điểm danh"
+                       style="-fx-font-size:16px;
+                              -fx-font-weight:bold;
+                              -fx-text-fill:#34495e;"/>
+
+                <ImageView fx:id="imgQR"
+                           fitWidth="260"
+                           fitHeight="260"
+                           preserveRatio="true"
+                           style="-fx-border-color:#dcdcdc;
+                                  -fx-border-radius:10;
+                                  -fx-background-radius:10;"/>
+
+                <TextField fx:id="txtSubject"
+                           promptText="Môn học"
+                           style="-fx-background-radius:8;"/>
+
+                <TextField fx:id="txtRoom"
+                           promptText="Phòng học"
+                           style="-fx-background-radius:8;"/>
+
+                <HBox spacing="12" alignment="CENTER">
+                    <Button text="Tạo QR"
+                            onAction="#onGenerateQR"
+                            prefWidth="130"
+                            style="-fx-background-color:#1abc9c;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:bold;
+                                   -fx-background-radius:8;"/>
+
+                    <Button text="Làm mới"
+                            onAction="#onClearQR"
+                            prefWidth="110"
+                            style="-fx-background-radius:8;"/>
+                </HBox>
+            </VBox>
+
+            <!-- ================= RIGHT: TABLE ================= -->
+            <VBox spacing="12"
+                  VBox.vgrow="ALWAYS"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:18;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 4);">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Sinh viên đã điểm danh"
+                       style="-fx-font-size:16px;
+                              -fx-font-weight:bold;
+                              -fx-text-fill:#34495e;"/>
+
+                <TableView fx:id="tableQR"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-radius:12;
+                                  -fx-border-radius:12;"
+                           fixedCellSize="42">
+
+                    <columns>
+                        <TableColumn fx:id="colSTT"
+                                     text="STT"
+                                     prefWidth="60"/>
+
+                        <TableColumn fx:id="colMSSV"
+                                     text="MSSV"
+                                     prefWidth="150"/>
+
+                        <TableColumn fx:id="colName"
+                                     text="Họ tên"
+                                     prefWidth="260"/>
+
+                        <TableColumn fx:id="colTime"
+                                     text="Thời gian"
+                                     prefWidth="200"/>
+                    </columns>
+
+                </TableView>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

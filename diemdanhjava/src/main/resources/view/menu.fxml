@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="487.0" prefWidth="899.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.MainController">
+
+    <!-- ================= NỀN ================= -->
+    <Pane layoutX="-9.0" layoutY="-9.0"
+          prefHeight="500.0" prefWidth="963.0"
+          style="
+              -fx-background-color: linear-gradient(to right,#2dd4bf,#34d399);
+              -fx-background-radius: 20;
+          ">
+        <children>
+            <!-- TITLE -->
+            <Label layoutX="411.0" layoutY="75.0"
+                   text="MENU"
+                   style="-fx-font-size: 26; -fx-font-weight: bold;" />
+        </children>
+    </Pane>
+
+    <!-- ================= USER + LOGOUT ================= -->
+    <Pane fx:id="slotUser" layoutX="760" layoutY="90">
+        <VBox spacing="8" alignment="CENTER_RIGHT">
+
+            <!-- USER INFO -->
+            <HBox spacing="6" alignment="CENTER_RIGHT">
+                <Label style="-fx-font-size: 18;" text="👤" />
+                <Label fx:id="lblUser"
+                       text="User"
+                       style="-fx-font-size:14; -fx-font-weight:bold;" />
+            </HBox>
+
+            <!-- LOGOUT BUTTON -->
+            <Button text="Đăng xuất"
+                    onAction="#onLogout"
+                    style="
+                        -fx-background-color:#e74c3c;
+                        -fx-text-fill:white;
+                        -fx-font-weight:bold;
+                        -fx-background-radius:16;
+                        -fx-padding:6 16;
+                    " />
+        </VBox>
+    </Pane>
+
+    <!-- ================= GRID MENU ================= -->
+    <GridPane hgap="40" vgap="40"
+              layoutX="200" layoutY="160">
+
+        <!-- SLOT 1: CAMERA -->
+        <Pane fx:id="slotCamera"
+              onMouseClicked="#onCameraClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="📷" style="-fx-font-size:28;" />
+                <Label text="Camera" />
+            </VBox>
+        </Pane>
+
+        <!-- SLOT 2: MANUAL -->
+        <Pane fx:id="slotManual"
+              GridPane.columnIndex="1"
+              onMouseClicked="#onManualClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="≡" style="-fx-font-size:28;" />
+                <Label text="Điểm danh tay" />
+            </VBox>
+        </Pane>
+
+        <!-- SLOT 3: QR -->
+        <Pane fx:id="slotQR"
+              GridPane.columnIndex="2"
+              onMouseClicked="#onQRClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="▣" style="-fx-font-size:28;" />
+                <Label text="QR" />
+            </VBox>
+        </Pane>
+
+        <!-- SLOT 4: STATISTIC -->
+        <Pane fx:id="slotStatistic"
+              GridPane.rowIndex="1"
+              onMouseClicked="#onStatisticClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="📊" style="-fx-font-size:28;" />
+                <Label text="Thống kê" />
+            </VBox>
+        </Pane>
+
+        <!-- SLOT 5: TEACHER -->
+        <Pane fx:id="slotTeacher"
+              GridPane.columnIndex="1" GridPane.rowIndex="1"
+              onMouseClicked="#onTeacherClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="👨‍🏫" style="-fx-font-size:28;" />
+                <Label text="Giáo viên" />
+            </VBox>
+        </Pane>
+
+        <!-- SLOT 6: STUDENT -->
+        <Pane fx:id="slotStudent"
+              GridPane.columnIndex="2" GridPane.rowIndex="1"
+              onMouseClicked="#onStudentClick"
+              prefHeight="120" prefWidth="140"
+              style="-fx-background-color:white; -fx-background-radius:20;">
+            <VBox alignment="CENTER" prefHeight="120" prefWidth="140" spacing="6">
+                <Label text="👤" style="-fx-font-size:28;" />
+                <Label text="Sinh viên" />
+            </VBox>
+        </Pane>
+
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+
+    </GridPane>
+
+</AnchorPane>

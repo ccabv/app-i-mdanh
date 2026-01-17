@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1100" prefHeight="700"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.StatisticsController"
+            style="-fx-background-color: linear-gradient(to bottom, #43e0a6, #1abc9c);">
+
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color: rgba(255,255,255,0.95);">
+            <padding>
+                <Insets top="12" right="20" bottom="12" left="20"/>
+            </padding>
+
+            <Button text="← Quay lại"
+                    onAction="#onBack"
+                    style="
+                        -fx-background-color:#e74c3c;
+                        -fx-text-fill:white;
+                        -fx-font-weight:bold;
+                        -fx-background-radius:8;
+                        -fx-padding:6 14;
+                    "/>
+
+            <Label text="THỐNG KÊ ĐIỂM DANH"
+                   style="-fx-font-size:22px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#0f172a;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <VBox spacing="25">
+            <padding>
+                <Insets top="25" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- ================= SUMMARY ================= -->
+            <HBox spacing="20">
+
+                <VBox prefWidth="260"
+                      alignment="CENTER"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;">
+                    <padding>
+                        <Insets top="20" bottom="20"/>
+                    </padding>
+                    <Label text="Tổng lượt điểm danh"/>
+                    <Label fx:id="lblTotalAttendance"
+                           style="-fx-font-size:26px;
+                                  -fx-font-weight:bold;"/>
+                </VBox>
+
+                <VBox prefWidth="260"
+                      alignment="CENTER"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;">
+                    <padding>
+                        <Insets top="20" bottom="20"/>
+                    </padding>
+                    <Label text="Số sinh viên"/>
+                    <Label fx:id="lblTotalStudent"
+                           style="-fx-font-size:26px;
+                                  -fx-font-weight:bold;"/>
+                </VBox>
+
+                <VBox prefWidth="260"
+                      alignment="CENTER"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;">
+                    <padding>
+                        <Insets top="20" bottom="20"/>
+                    </padding>
+                    <Label text="Số môn học"/>
+                    <Label fx:id="lblTotalSubject"
+                           style="-fx-font-size:26px;
+                                  -fx-font-weight:bold;"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- ================= TABLE ================= -->
+            <VBox spacing="10"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:18;">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <Label text="Chi tiết điểm danh"
+                       style="-fx-font-size:16px;
+                              -fx-font-weight:bold;"/>
+
+                <TableView fx:id="tableStat"
+                           prefHeight="420">
+
+                    <columns>
+
+                        <TableColumn fx:id="colSTT"
+                                     text="STT"
+                                     prefWidth="60"/>
+
+                        <TableColumn fx:id="colMSSV"
+                                     text="MSSV"
+                                     prefWidth="120"/>
+
+                        <TableColumn fx:id="colName"
+                                     text="Họ tên"
+                                     prefWidth="200"/>
+
+                        <!-- ✅ CỘT LỚP (ĐÃ THÊM) -->
+                        <TableColumn fx:id="colClass"
+                                     text="Lớp"
+                                     prefWidth="120"/>
+
+                        <TableColumn fx:id="colSubject"
+                                     text="Môn học"
+                                     prefWidth="160"/>
+
+                        <TableColumn fx:id="colRoom"
+                                     text="Phòng"
+                                     prefWidth="90"/>
+
+                        <TableColumn fx:id="colStatus"
+                                     text="Trạng thái"
+                                     prefWidth="120"/>
+
+                        <TableColumn fx:id="colTime"
+                                     text="Thời gian"
+                                     prefWidth="160"/>
+
+                    </columns>
+                </TableView>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

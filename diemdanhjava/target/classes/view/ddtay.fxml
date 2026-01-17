@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1100" prefHeight="700"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ManualAttendanceController"
+            style="-fx-background-color: linear-gradient(to bottom, #43e0a6, #1abc9c);">
+
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT"
+              style="-fx-background-color: rgba(255,255,255,0.95);">
+            <padding>
+                <Insets top="12" right="20" bottom="12" left="20"/>
+            </padding>
+
+            <Button text="← Quay lại"
+                    onAction="#onBack"
+                    style="
+                        -fx-background-color: #e74c3c;
+                        -fx-text-fill: white;
+                        -fx-font-weight: bold;
+                        -fx-background-radius: 8;
+                        -fx-padding: 6 14;
+                    "/>
+
+            <Label text="ĐIỂM DANH TAY"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <HBox spacing="30">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- ================= LEFT: FORM ================= -->
+            <VBox spacing="14"
+                  prefWidth="360"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 18;">
+                <padding>
+                    <Insets top="22" right="22" bottom="22" left="22"/>
+                </padding>
+
+                <Label text="Thông tin sinh viên"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: bold;"/>
+
+                <!-- MSSV -->
+                <TextField fx:id="txtMSSV"
+                           promptText="Mã sinh viên"
+                           onKeyReleased="#onMSSVChanged"/>
+
+                <!-- AUTO FILL -->
+                <TextField fx:id="txtHoTen"
+                           promptText="Họ và tên"
+                           editable="false"/>
+
+                <TextField fx:id="txtLop"
+                           promptText="Lớp"
+                           editable="false"/>
+
+                <!-- 🔴 THÊM MỚI -->
+                <TextField fx:id="txtMonHoc"
+                           promptText="Môn học"/>
+
+                <TextField fx:id="txtPhong"
+                           promptText="Phòng"/>
+
+                <Separator/>
+
+                <Label text="Trạng thái điểm danh"
+                       style="-fx-font-weight: bold;"/>
+
+                <HBox spacing="15">
+                    <RadioButton fx:id="rbPresent" text="Có mặt"/>
+                    <RadioButton fx:id="rbAbsent"  text="Vắng"/>
+                    <RadioButton fx:id="rbLate"    text="Trễ"/>
+                </HBox>
+
+                <Separator/>
+
+                <!-- BUTTON -->
+                <HBox spacing="12" alignment="CENTER">
+                    <Button text="Lưu"
+                            prefWidth="90"
+                            onAction="#onSave"
+                            style="
+                                -fx-background-color:#1abc9c;
+                                -fx-text-fill:white;
+                                -fx-background-radius:8;
+                            "/>
+
+                    <Button text="Làm mới"
+                            prefWidth="90"
+                            onAction="#onClear"
+                            style="-fx-background-radius:8;"/>
+
+                    <Button text="Xóa"
+                            prefWidth="80"
+                            onAction="#onDelete"
+                            style="
+                                -fx-background-color:#e67e22;
+                                -fx-text-fill:white;
+                                -fx-background-radius:8;
+                            "/>
+
+                    <Button text="Xuất"
+                            prefWidth="80"
+                            onAction="#onExport"
+                            style="
+                                -fx-background-color:#3498db;
+                                -fx-text-fill:white;
+                                -fx-background-radius:8;
+                            "/>
+                </HBox>
+            </VBox>
+
+            <!-- ================= RIGHT: TABLE ================= -->
+            <VBox spacing="12"
+                  VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 18;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Danh sách điểm danh"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: bold;"/>
+
+                <TableView fx:id="tableAttendance" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colSTT" text="STT" prefWidth="60"/>
+                        <TableColumn fx:id="colMSSV" text="MSSV" prefWidth="140"/>
+                        <TableColumn fx:id="colHoTen" text="Họ tên" prefWidth="220"/>
+                        <TableColumn fx:id="colLop" text="Lớp" prefWidth="100"/>
+                        <TableColumn fx:id="colTrangThai" text="Trạng thái" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>
